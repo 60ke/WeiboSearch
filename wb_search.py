@@ -57,7 +57,8 @@ def wb_search(username,password):
         此时的content差不多就是我们看到的网页的文字内容了
         '''
         if "我真滴不是机器" in content:
-            handle_slock(self.session)
+            while handle_slock(session) is False:
+                handle_slock(session)
         max_page = int(max(re.findall("第(\d+?)页", content)))
         # import pdb
         # pdb.set_trace()
